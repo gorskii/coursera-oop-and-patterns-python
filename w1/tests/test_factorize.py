@@ -17,7 +17,11 @@ class TestFactorize(unittest.TestCase):
                 self.assertRaises(ValueError, factorize, case)
 
     def test_zero_and_one_cases(self):
-        self.fail()
+        self.cases = (0, 1)
+        self.expected = ((0,), (1,))
+        for case, result in zip(self.cases, self.expected):
+            with self.subTest(case=case):
+                self.assertEqual(factorize(case), result)
 
     def test_simple_numbers(self):
         self.fail()
