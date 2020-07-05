@@ -1,9 +1,14 @@
 import unittest
 
+from w1.factorize import factorize
+
 
 class TestFactorize(unittest.TestCase):
     def test_wrong_types_raise_exception(self):
-        self.fail()
+        self.cases = ('string', 1.5)
+        for case in self.cases:
+            with self.subTest(case=case):
+                self.assertRaises(TypeError, factorize, case)
 
     def test_negative(self):
         self.fail()
