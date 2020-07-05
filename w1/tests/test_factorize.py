@@ -11,7 +11,10 @@ class TestFactorize(unittest.TestCase):
                 self.assertRaises(TypeError, factorize, case)
 
     def test_negative(self):
-        self.fail()
+        self.cases = (-1, -10, -100)
+        for case in self.cases:
+            with self.subTest(case=case):
+                self.assertRaises(ValueError, factorize, case)
 
     def test_zero_and_one_cases(self):
         self.fail()
