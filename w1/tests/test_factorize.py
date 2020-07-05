@@ -31,7 +31,11 @@ class TestFactorize(unittest.TestCase):
                 self.assertEqual(factorize(case), result)
 
     def test_two_simple_multipliers(self):
-        self.fail()
+        self.cases = (6, 26, 121)
+        self.expected = ((2, 3), (2, 13), (11, 11))
+        for case, result in zip(self.cases, self.expected):
+            with self.subTest(case=case):
+                self.assertEqual(factorize(case), result)
 
     def test_many_multipliers(self):
         self.fail()
