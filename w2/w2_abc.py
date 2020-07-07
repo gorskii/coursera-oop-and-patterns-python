@@ -45,13 +45,16 @@ class B(Base):
 
     def get_pre(self):
         ans = self.get_answer()
-        res = [int(x == 1 and y == 1) for (x, y) in zip(ans, self.result)]
+        res = self.get_res(ans)
         return sum(res) / sum(ans)
 
     def get_rec(self):
         ans = self.get_answer()
-        res = [int(x == 1 and y == 1) for (x, y) in zip(ans, self.result)]
+        res = self.get_res(ans)
         return sum(res) / sum(self.result)
+
+    def get_res(self, ans):
+        return [int(x == 1 and y == 1) for (x, y) in zip(ans, self.result)]
 
     def get_score(self):
         pre = self.get_pre()
