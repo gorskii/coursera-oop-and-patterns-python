@@ -1,11 +1,66 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import math
+import random
+from typing import Tuple, Union
 
 import pygame
-import random
-import math
 
 SCREEN_DIM = (800, 600)
+
+
+class Vec2d:
+    """A 2-dimensional vector defined by x and y coordinates.
+
+    Supports basic vector arithmetic operations, such as addition,
+    subtraction, and scalar multiplication.
+
+    - int_pair() returns a tuple of vector's integer coordinates.
+    """
+
+    def __init__(self, x: float, y: float) -> None:
+        """Initialize vector with given coordinates."""
+        self.x = x
+        self.y = y
+
+    def __add__(self, other: 'Vec2d') -> 'Vec2d':
+        """Return the sum of two vectors"""
+        if not isinstance(other, type(self)):
+            return NotImplemented
+        return Vec2d(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other: 'Vec2d') -> 'Vec2d':
+        """Return subtraction of two vectors"""
+        if not isinstance(other, Vec2d):
+            return NotImplemented
+        return Vec2d(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, other: Union[int, float]) -> 'Vec2d':
+        """Return a vector multiplied by number"""
+        if not isinstance(other, (int, float)):
+            return NotImplemented
+        return Vec2d(self.x * other, self.y * other)
+
+    def __rmul__(self, other: Union[int, float]) -> 'Vec2d':
+        """Return a vector multiplied by number"""
+        return self.__mul__(other)
+
+    def __eq__(self, other: object) -> bool:
+        """Return true if vectors are equal"""
+        if not isinstance(other, type(self)):
+            return NotImplemented
+        return (self.x, self.y) == (other.x, other.y)
+
+    def __len__(self) -> int:
+        """Return the length of a vector"""
+        return int(math.sqrt(self.x * self.x + self.y * self.y))
+
+    def __repr__(self) -> str:
+        return f'Vec2d({self.x}, {self.y})'
+
+    def int_pair(self) -> Tuple[int, int]:
+        """Return vector's coordinates as a tuple of integers"""
+        return int(self.x), int(self.y)
 
 
 # =======================================================================================
