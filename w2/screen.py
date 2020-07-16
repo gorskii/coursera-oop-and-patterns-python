@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import math
 import random
-from typing import Tuple, Union
+from typing import Tuple, Union, List, Optional
 
 import pygame
 
@@ -61,6 +61,37 @@ class Vec2d:
     def int_pair(self) -> Tuple[int, int]:
         """Return vector's coordinates as a tuple of integers"""
         return int(self.x), int(self.y)
+
+
+class Polyline:
+    """A polyline containing a list of points with their speed.
+
+    - A polyline can be drawn using draw_points()
+    """
+
+    def __init__(
+        self, points: Optional[List[List[Vec2d, float]]] = None
+    ) -> None:
+        self.points = points or []
+
+    def draw_points(
+        self, width: int = 3, color: Tuple[int, int, int] = (255, 255, 255)
+    ) -> None:
+        """Draw points of a polyline on the screen
+
+        :param width: width of the drawing object
+        :param color: color in RGB
+        """
+
+    def set_points(self) -> None:
+        """Recalculate points coordinates"""
+
+    def add_point(self, point: Vec2d, speed: float = 1.0) -> None:
+        """Add a point to polyline
+
+        :param point: Vec2d point object
+        :param speed: speed of the point
+        """
 
 
 # =======================================================================================
