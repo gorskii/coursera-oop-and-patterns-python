@@ -103,6 +103,38 @@ class Polyline:
         """
 
 
+class Knot(Polyline):
+    """Knot object that makes a smoothed polyline"""
+
+    def __init__(
+            self, points: Optional[List[PolylinePoint]] = None, steps: int = 1
+    ) -> None:
+        """Initialize Knot object from given list of points
+
+        :param points: Base points of polyline
+        :param steps: Number of smoothing steps
+        """
+        super().__init__(points)
+        self.step = steps
+
+    def get_knot(self) -> List[PolylinePoint]:
+        """Return list of knot points"""
+
+    def _get_knot_points(self) -> List[PolylinePoint]:
+        """Return list of knot points based on polyline points"""
+
+    def _get_knot_point(
+            self, alpha: int, degree: Optional[int] = None
+    ) -> PolylinePoint:
+        """Return next smoothing point in n-degree curve calculated
+        recursively from polyline points with given angle `alpha`
+        between points.
+
+        :param alpha: Angle between curve points
+        :param degree: Curve degree
+        """
+
+
 # =======================================================================================
 # Функции для работы с векторами
 # =======================================================================================
