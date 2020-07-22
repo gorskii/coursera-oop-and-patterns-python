@@ -82,10 +82,14 @@ class Polyline:
         self.points = points or []
 
     def draw_points(
-            self, width: int = 3, color: Tuple[int, int, int] = (255, 255, 255)
+            self,
+            style: str = 'points',
+            width: int = 3,
+            color: Tuple[int, int, int] = (255, 255, 255)
     ) -> None:
         """Draw points of a polyline on the screen
 
+        :param style: Style of drawing object. Options: 'points', 'line'
         :param width: Width of the drawing object
         :param color: Color in RGB
         """
