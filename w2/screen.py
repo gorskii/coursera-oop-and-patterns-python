@@ -6,6 +6,9 @@ from typing import Tuple, Union, List, Optional
 
 import pygame
 
+PointSpeed = Tuple[float, float]
+PolylinePoint = Tuple['Vec2d', PointSpeed]
+
 SCREEN_DIM = (800, 600)
 
 
@@ -70,27 +73,33 @@ class Polyline:
     """
 
     def __init__(
-        self, points: Optional[List[List[Vec2d, float]]] = None
+            self, points: Optional[List[PolylinePoint]] = None
     ) -> None:
+        """Initialize Polyline object from given list of points
+
+        :param points: List of vector-points and speeds
+        """
         self.points = points or []
 
     def draw_points(
-        self, width: int = 3, color: Tuple[int, int, int] = (255, 255, 255)
+            self, width: int = 3, color: Tuple[int, int, int] = (255, 255, 255)
     ) -> None:
         """Draw points of a polyline on the screen
 
-        :param width: width of the drawing object
-        :param color: color in RGB
+        :param width: Width of the drawing object
+        :param color: Color in RGB
         """
 
     def set_points(self) -> None:
-        """Recalculate points coordinates"""
+        """Recalculate coordinates of points"""
 
-    def add_point(self, point: Vec2d, speed: float = 1.0) -> None:
+    def add_point(
+            self, point: Vec2d, speed: PointSpeed = (0.5, 0.5)
+    ) -> None:
         """Add a point to polyline
 
         :param point: Vec2d point object
-        :param speed: speed of the point
+        :param speed: Speed of the point
         """
 
 
